@@ -141,7 +141,43 @@ namespace aimlabs
 
         private void ShowDummies(int x, int y, int skin, string tag)
         {
-            
+            // creates a new imagebrush for the dummy skin
+            ImageBrush dummyColour = new ImageBrush();
+
+            // switch function for dictating the colour of the dummy
+            // takes an int from the parameter and uses it for the switch function
+            switch (skin)
+            {
+                case 1:
+                    dummyColour.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/dummy01.png"));
+                    break;
+                case 2:
+                    dummyColour.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/dummy02.png"));
+                    break;
+                case 3:
+                    dummyColour.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/dummy03.png"));
+                    break;
+                case 4:
+                    dummyColour.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/dummy04.png"));
+                    break;
+                default:
+                    dummyColour.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/dummy01.png"));
+                    break;
+            }
+
+            // creates a new rectangle for the dummy
+            Rectangle newRect = new Rectangle
+            {
+                Tag = tag,
+                Width = 80,
+                Height = 155,
+                Fill = dummyColour
+            };
+
+            Canvas.SetTop(newRect, y); // positions the rectangle y coord
+            Canvas.SetLeft(newRect, x); // positions the rectangle x coord
+
+            MyCanvas.Children.Add(newRect);
         }
 
         private void MyCanvas_MouseMove(object sender, MouseEventArgs e)
