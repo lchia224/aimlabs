@@ -84,7 +84,7 @@ namespace aimlabs
 
         private void ShowDummies(int x, int y, int skin, string tag)
         {
-
+            
         }
 
         private void MyCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -94,7 +94,44 @@ namespace aimlabs
 
         private void ShootDummy(object sender, MouseButtonEventArgs e)
         {
+            //if click source is rectangle then we will create a new rectangle
+            //and link it to the rectangle that will trigger the click event
+            if(e.OriginalSource is Rectangle)
+            {
+                Rectangle activeRec = (Rectangle)e.OriginalSource; // create link between the sender rectangle
 
+                MyCanvas.Children.Remove(activeRec); // finds rectangle and removes from canvas
+
+                score++; //adds 1 to the score
+
+                if((string)activeRec.Tag == "top")
+                {
+                    //if the rectangle tag was top
+                    //deduct one from the top count integer
+                    topCount--;
+                }
+                else if((string)activeRec.Tag == "bottom")
+                {
+                    //if the rectangle tag was bottom
+                    //deduct one from the bottom count integer
+                    bottomCount--;
+                }
+
+                //initializing ghost rectangle
+                Rectangle ghostRec = new Rectangle
+                {
+                    Width = 60,
+                    Height = 100,
+                    Fill = ghostSprite,
+                    Tag = "ghost"
+                };
+
+                //setting where the ghost will appear on the mouse click location
+                Canvas.SetLeft(ghostRec, Mouse.GetPosition(MyCanvas).X - 40); //sets left position of rectangle to mouse X axis
+                Canvas.SetTop(ghostRec, Mouse.GetPosition(MyCanvas).Y - 60); //set top position of rectangle to mouse Y axis
+
+                MyCanvas.Children.Add(ghostRec); // adds the new rectangle to the canvas
+            }
         }
     }
 }
