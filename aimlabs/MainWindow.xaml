@@ -1,0 +1,17 @@
+﻿<Window x:Class="aimlabs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aimlabs"
+        mc:Ignorable="d"
+        Title="MainWindow" ResizeMode="CanMinimize" Height="450" Width="800" FocusManager.FocusedElement="{Binding ElementName=MyCanvas}">
+    
+    <Canvas Name="MyCanvas" Focusable="True" MouseLeftButtonDown="ShootDummy" MouseMove="MyCanvas_MouseMove" Background="AliceBlue">
+
+        <Image Name="scopeImage" Height="60" Width="60" Canvas.Left="301" Canvas.Top="275" IsHitTestVisible="False" Panel.ZIndex="999"/>
+        <Label Name="scoreText" Content="Score: " FontSize="14" Foreground="Green" Canvas.Left="660" Canvas.Top="65"/>
+        <Label Name="missText" Content="Miss: " FontSize="14" Foreground="Red" Canvas.Left="660" Canvas.Top="20"/>
+    
+    </Canvas>
+</Window>
