@@ -71,6 +71,28 @@ namespace aimlabs
 
         private void ShowGhostTimer_Tick(object sender, EventArgs e)
         {
+            scoreText.Content = "Scored: " + score; // links score to the score text
+            missText.Content = "Missed: " + miss; // links miss to missed text
+
+            // runs a foreach loop to check if there are any rectangles present in the canvas
+            foreach(var x in MyCanvas.Children.OfType<Rectangle>())
+            {
+                // checks for rectangles with ghost tag
+                if((string)x.Tag == "ghost")
+                {
+                    // animate ghost to top of the canvas
+                    Canvas.SetTop(x, (Canvas.GetTop(x) - 5));
+
+                    if(Canvas.GetTop(x) < -180)
+                    {
+                        remover.Add(x);
+                    }
+                }
+            }
+            foreach(Rectangle y in remover)
+            {
+                MyCanvas.Children.Remove(y);
+            }
         }
 
         private void DummyMoveTimer_Tick(object sender, EventArgs e)
