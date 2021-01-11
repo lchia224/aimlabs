@@ -1,0 +1,15 @@
+Z:\Graduate\Projects\aimlabs\aimlabs\bin\Debug\aimlabs.exe.config
+Z:\Graduate\Projects\aimlabs\aimlabs\bin\Debug\aimlabs.exe
+Z:\Graduate\Projects\aimlabs\aimlabs\bin\Debug\aimlabs.pdb
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.csprojAssemblyReference.cache
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\MainWindow.g.cs
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\App.g.cs
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs_MarkupCompile.cache
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs_MarkupCompile.lref
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\MainWindow.baml
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.g.resources
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.Properties.Resources.resources
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.csproj.GenerateResource.cache
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.csproj.CoreCompileInputs.cache
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.exe
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.pdb

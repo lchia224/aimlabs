@@ -45,14 +45,14 @@ namespace aimlabs
             this.Cursor = Cursors.None; // hides cursor
 
             // setting up background
-            backgroundImage.ImageSource = new BitmapImage(new Uri("/images/background.png"));
+            backgroundImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/background.png"));
             MyCanvas.Background = backgroundImage;
 
             // setting up scope
-            scopeImage.Source = new BitmapImage(new Uri("/images/sniper-aim.png"));
+            scopeImage.Source = new BitmapImage(new Uri("pack://application:,,,/images/sniper-aim.png"));
 
             // setting up ghost image
-            ghostSprite.ImageSource = new BitmapImage(new Uri("/images/ghost.png"));
+            ghostSprite.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/ghost.png"));
 
             // setting up dummy moving timer
             DummyMoveTimer.Tick += DummyMoveTimer_Tick;
@@ -71,12 +71,10 @@ namespace aimlabs
 
         private void ShowGhostTimer_Tick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         private void DummyMoveTimer_Tick(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
         }
 
         private void ShowDummies(int x, int y, int skin, string tag)
