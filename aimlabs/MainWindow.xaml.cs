@@ -83,12 +83,16 @@ namespace aimlabs
                     // animate ghost to top of the canvas
                     Canvas.SetTop(x, (Canvas.GetTop(x) - 5));
 
+                    // if the ghost animates 180 pixels from its current position
+                    // add to remover list
                     if(Canvas.GetTop(x) < -180)
                     {
                         remover.Add(x);
                     }
                 }
             }
+
+            // loops through rectangle list and removes each entity inside the list
             foreach(Rectangle y in remover)
             {
                 MyCanvas.Children.Remove(y);
@@ -97,6 +101,42 @@ namespace aimlabs
 
         private void DummyMoveTimer_Tick(object sender, EventArgs e)
         {
+            remover.Clear(); // clears the garbage collector
+
+            // foreach loop to check if any rectangles are present in the canvas
+            // if so, remove the rectangles
+            foreach(var i in MyCanvas.Children.OfType<Rectangle>())
+            {
+                if((string)i.Tag == "top") 
+                {
+                    remover.Add(i);
+                    topCount--;
+                    
+                    miss++;
+                }
+                else if((string)i.Tag == "bottom")
+                {
+                    remover.Add(i);
+                    bottomCount--;
+
+                    miss++;
+                }
+            }
+
+            // if ghost on top row is less than 3
+            // add a dummy
+            if(topCount < 3)
+            {
+                ShowDummies(topLocations[rand.Next(0, 5)], 35, rand.Next(1, 4), "top");
+                topCount++;
+            }
+            // if ghost on bottom row is less than 3
+            // add a dummy
+            if(bottomCount < 3)
+            {
+                ShowDummies(bottomLocations[rand.Next(0, 5)], 230, rand.Next(1, 4), "bottom");
+                bottomCount++;
+            }
         }
 
         private void ShowDummies(int x, int y, int skin, string tag)
