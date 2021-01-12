@@ -123,14 +123,14 @@ namespace aimlabs
                 }
             }
 
-            // if ghost on top row is less than 3
+            // if dummy on top row is less than 3
             // add a dummy
             if(topCount < 3)
             {
                 ShowDummies(topLocations[rand.Next(0, 5)], 35, rand.Next(1, 4), "top");
                 topCount++;
             }
-            // if ghost on bottom row is less than 3
+            // if dummy on bottom row is less than 3
             // add a dummy
             if(bottomCount < 3)
             {
@@ -217,21 +217,41 @@ namespace aimlabs
                     bottomCount--;
                 }
 
-                // initializing ghost rectangle
-                Rectangle ghostRec = new Rectangle
-                {
-                    Width = 60,
-                    Height = 100,
-                    Fill = ghostSprite,
-                    Tag = "ghost"
-                };
-
-                // setting where the ghost will appear on the mouse click location
-                Canvas.SetLeft(ghostRec, Mouse.GetPosition(MyCanvas).X - 40); // sets left position of rectangle to mouse X axis
-                Canvas.SetTop(ghostRec, Mouse.GetPosition(MyCanvas).Y - 60); // set top position of rectangle to mouse Y axis
-
-                MyCanvas.Children.Add(ghostRec); // adds the new rectangle to the canvas
+                createGhost();
             }
+            else if(e.OriginalSource is Canvas)
+            {
+                remover.Clear();
+
+                foreach(Rectangle i in MyCanvas.Children.OfType<Rectangle>())
+                {                   
+                    if ((string)i.Tag == "top" || (string)i.Tag == "bottom")
+                    {
+                        remover.Add(i);
+                        topCount--;
+                        bottomCount--;
+                        miss++;
+                    }
+                }
+            }
+        }
+
+        private void createGhost()
+        {
+            // initializing ghost rectangle
+            Rectangle ghostRec = new Rectangle
+            {
+                Width = 60,
+                Height = 100,
+                Fill = ghostSprite,
+                Tag = "ghost"
+            };
+
+            // setting where the ghost will appear on the mouse click location
+            Canvas.SetLeft(ghostRec, Mouse.GetPosition(MyCanvas).X - 40); // sets left position of rectangle to mouse X axis
+            Canvas.SetTop(ghostRec, Mouse.GetPosition(MyCanvas).Y - 60); // set top position of rectangle to mouse Y axis
+
+            MyCanvas.Children.Add(ghostRec); // adds the new rectangle to the canvas
         }
     }
 }
