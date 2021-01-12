@@ -38,6 +38,8 @@ namespace aimlabs
 
         Random rand = new Random(); // random number generator
 
+        Result result = new Result();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -218,6 +220,7 @@ namespace aimlabs
                 }
 
                 createGhost();
+                ShowResult();
             }
             else if(e.OriginalSource is Canvas)
             {
@@ -252,6 +255,16 @@ namespace aimlabs
             Canvas.SetTop(ghostRec, Mouse.GetPosition(MyCanvas).Y - 60); // set top position of rectangle to mouse Y axis
 
             MyCanvas.Children.Add(ghostRec); // adds the new rectangle to the canvas
+        }
+
+        private void ShowResult()
+        {
+            Result result = new Result();
+
+            if(score == 5)
+            {
+                result.ShowDialog();
+            }
         }
     }
 }

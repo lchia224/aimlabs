@@ -13,3 +13,5 @@ Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.csproj.GenerateResource.c
 Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.csproj.CoreCompileInputs.cache
 Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.exe
 Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.pdb
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\Result.g.cs
+Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\Result.baml
