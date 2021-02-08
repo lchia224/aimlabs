@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -41,12 +42,10 @@ namespace aimlabs
 
         Result result = new Result();
 
-<<<<<<< HEAD
         string connectionString;
         SqlConnection connection;
+        string sql; 
 
-=======
->>>>>>> 3fb17030d40593c9398c5d99c26322cd74da1a4f
         public MainWindow()
         {
             InitializeComponent();
@@ -84,17 +83,17 @@ namespace aimlabs
             missText.Content = "Missed: " + miss; // links miss to missed text
 
             // runs a foreach loop to check if there are any rectangles present in the canvas
-            foreach(var x in MyCanvas.Children.OfType<Rectangle>())
+            foreach (var x in MyCanvas.Children.OfType<Rectangle>())
             {
                 // checks for rectangles with ghost tag
-                if((string)x.Tag == "ghost")
+                if ((string)x.Tag == "ghost")
                 {
                     // animate ghost to top of the canvas
                     Canvas.SetTop(x, (Canvas.GetTop(x) - 5));
 
                     // if the ghost animates 180 pixels from its current position
                     // add to remover list
-                    if(Canvas.GetTop(x) < -180)
+                    if (Canvas.GetTop(x) < -180)
                     {
                         remover.Add(x);
                     }
@@ -102,7 +101,7 @@ namespace aimlabs
             }
 
             // loops through rectangle list and removes each entity inside the list
-            foreach(Rectangle y in remover)
+            foreach (Rectangle y in remover)
             {
                 MyCanvas.Children.Remove(y);
             }
@@ -114,16 +113,16 @@ namespace aimlabs
 
             // foreach loop to check if any rectangles are present in the canvas
             // if so, remove the rectangles
-            foreach(var i in MyCanvas.Children.OfType<Rectangle>())
+            foreach (var i in MyCanvas.Children.OfType<Rectangle>())
             {
-                if((string)i.Tag == "top") 
+                if ((string)i.Tag == "top")
                 {
                     remover.Add(i);
                     topCount--;
-                    
+
                     miss++;
                 }
-                else if((string)i.Tag == "bottom")
+                else if ((string)i.Tag == "bottom")
                 {
                     remover.Add(i);
                     bottomCount--;
@@ -134,14 +133,14 @@ namespace aimlabs
 
             // if dummy on top row is less than 3
             // add a dummy
-            if(topCount < 3)
+            if (topCount < 3)
             {
                 ShowDummies(topLocations[rand.Next(0, 5)], 35, rand.Next(1, 4), "top");
                 topCount++;
             }
             // if dummy on bottom row is less than 3
             // add a dummy
-            if(bottomCount < 3)
+            if (bottomCount < 3)
             {
                 ShowDummies(bottomLocations[rand.Next(0, 5)], 230, rand.Next(1, 4), "bottom");
                 bottomCount++;
@@ -205,7 +204,7 @@ namespace aimlabs
         {
             // if click source is rectangle then we will create a new rectangle
             // and link it to the rectangle that will trigger the click event
-            if(e.OriginalSource is Rectangle)
+            if (e.OriginalSource is Rectangle)
             {
                 Rectangle activeRec = (Rectangle)e.OriginalSource; // create link between the sender rectangle
 
@@ -213,13 +212,13 @@ namespace aimlabs
 
                 score++; // adds 1 to the score
 
-                if((string)activeRec.Tag == "top")
+                if ((string)activeRec.Tag == "top")
                 {
                     // if the rectangle tag was top
                     // deduct one from the top count integer
                     topCount--;
                 }
-                else if((string)activeRec.Tag == "bottom")
+                else if ((string)activeRec.Tag == "bottom")
                 {
                     // if the rectangle tag was bottom
                     // deduct one from the bottom count integer
@@ -229,12 +228,12 @@ namespace aimlabs
                 createGhost();
                 ShowResult();
             }
-            else if(e.OriginalSource is Canvas)
+            else if (e.OriginalSource is Canvas)
             {
                 remover.Clear();
 
-                foreach(Rectangle i in MyCanvas.Children.OfType<Rectangle>())
-                {                   
+                foreach (Rectangle i in MyCanvas.Children.OfType<Rectangle>())
+                {
                     if ((string)i.Tag == "top" || (string)i.Tag == "bottom")
                     {
                         remover.Add(i);
@@ -267,24 +266,36 @@ namespace aimlabs
         private void ShowResult()
         {
             Result result = new Result();
-<<<<<<< HEAD
-            connectionString = @"Server=DESKTOP-GQQVEJ3;Initial Catalog=demodb; Trusted_Connection=True";
+            Guid guid = Guid.NewGuid();
 
-            if(score == 5)
+            connectionString = @"Data Source=DESKTOP-GQQVEJ3;Initial Catalog=demodb; Trusted_Connection=True";           
+
+            if (score == 5)
             {
                 connection = new SqlConnection(connectionString);
 
+                SqlCommand cmd = new SqlCommand("sproc_insert", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@first_name", "replace with textbox input");
+                cmd.Parameters.AddWithValue("@score", score);
+                cmd.Parameters.AddWithValue("@misses", miss);
+                cmd.Parameters.AddWithValue("@StatementType", "Insert");
                 connection.Open();
-                MessageBox.Show("Connection Open!");
+                int i = cmd.ExecuteNonQuery();
                 connection.Close();
 
-                DummyMoveTimer.Stop();
-=======
+                if(i!=0)
+                {
+                    MessageBox.Show(i + " Data Saved");
+                }
 
-            if(score == 5)
-            {
->>>>>>> 3fb17030d40593c9398c5d99c26322cd74da1a4f
-                result.ShowDialog();
+                DummyMoveTimer.Stop();
+
+                if (score == 5)
+                {
+
+                    result.ShowDialog();
+                }
             }
         }
     }
