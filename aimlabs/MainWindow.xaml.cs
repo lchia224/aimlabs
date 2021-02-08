@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,11 @@ namespace aimlabs
         List<Rectangle> remover = new List<Rectangle>(); // garbage collector for the game
 
         Random rand = new Random(); // random number generator
+
+        Result result = new Result();
+
+        string connectionString;
+        SqlConnection connection;
 
         public MainWindow()
         {
@@ -218,6 +224,7 @@ namespace aimlabs
                 }
 
                 createGhost();
+                ShowResult();
             }
             else if(e.OriginalSource is Canvas)
             {
@@ -252,6 +259,24 @@ namespace aimlabs
             Canvas.SetTop(ghostRec, Mouse.GetPosition(MyCanvas).Y - 60); // set top position of rectangle to mouse Y axis
 
             MyCanvas.Children.Add(ghostRec); // adds the new rectangle to the canvas
+        }
+
+        private void ShowResult()
+        {
+            Result result = new Result();
+            connectionString = @"Server=DESKTOP-GQQVEJ3;Initial Catalog=demodb; Trusted_Connection=True";
+
+            if(score == 5)
+            {
+                connection = new SqlConnection(connectionString);
+
+                connection.Open();
+                MessageBox.Show("Connection Open!");
+                connection.Close();
+
+                DummyMoveTimer.Stop();
+                result.ShowDialog();
+            }
         }
     }
 }
