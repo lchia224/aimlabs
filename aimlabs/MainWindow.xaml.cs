@@ -41,9 +41,12 @@ namespace aimlabs
 
         Result result = new Result();
 
+<<<<<<< HEAD
         string connectionString;
         SqlConnection connection;
 
+=======
+>>>>>>> 3fb17030d40593c9398c5d99c26322cd74da1a4f
         public MainWindow()
         {
             InitializeComponent();
@@ -264,6 +267,7 @@ namespace aimlabs
         private void ShowResult()
         {
             Result result = new Result();
+<<<<<<< HEAD
             connectionString = @"Server=DESKTOP-GQQVEJ3;Initial Catalog=demodb; Trusted_Connection=True";
 
             if(score == 5)
@@ -275,6 +279,11 @@ namespace aimlabs
                 connection.Close();
 
                 DummyMoveTimer.Stop();
+=======
+
+            if(score == 5)
+            {
+>>>>>>> 3fb17030d40593c9398c5d99c26322cd74da1a4f
                 result.ShowDialog();
             }
         }

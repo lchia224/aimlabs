@@ -15,6 +15,7 @@ Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.exe
 Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.pdb
 Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\Result.g.cs
 Z:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\Result.baml
+<<<<<<< HEAD
 Y:\Graduate\Projects\aimlabs\aimlabs\bin\Debug\aimlabs.exe.config
 Y:\Graduate\Projects\aimlabs\aimlabs\bin\Debug\aimlabs.exe
 Y:\Graduate\Projects\aimlabs\aimlabs\bin\Debug\aimlabs.pdb
@@ -32,3 +33,5 @@ Y:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.csproj.GenerateResource.c
 Y:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.csproj.CoreCompileInputs.cache
 Y:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.exe
 Y:\Graduate\Projects\aimlabs\aimlabs\obj\Debug\aimlabs.pdb
+=======
+>>>>>>> 3fb17030d40593c9398c5d99c26322cd74da1a4f
